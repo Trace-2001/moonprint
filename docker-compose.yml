@@ -1,0 +1,16 @@
+# 月印 Moonprint · 一条命令上线
+# 用法：docker compose up -d
+services:
+  moonprint:
+    build: .
+    container_name: moonprint
+    restart: unless-stopped
+    ports:
+      - "8765:8765"
+    volumes:
+      - moonprint_data:/data   # 贴图缓存持久化，重启不重新下载
+    environment:
+      - MOONPRINT_TEXDIR=/data/textures
+
+volumes:
+  moonprint_data:

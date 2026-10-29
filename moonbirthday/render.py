@@ -46,7 +46,9 @@ QUALITY = {
 TEXDIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), "textures")
 
 # 用户级贴图缓存目录：首次运行若包内无贴图，自动从 NASA 下载到这里
-CACHE_DIR = os.path.join(os.path.expanduser("~"), ".moonprint", "textures")
+# 可用环境变量 MOONPRINT_TEXDIR 覆盖（生产环境指向持久化卷）
+CACHE_DIR = os.environ.get("MOONPRINT_TEXDIR") or os.path.join(
+    os.path.expanduser("~"), ".moonprint", "textures")
 
 # 本地文件名 -> NASA SVS 官方源（CGI Moon Kit）
 _NASA_BASE = "https://svs.gsfc.nasa.gov/vis/a000000/a004700/a004720"

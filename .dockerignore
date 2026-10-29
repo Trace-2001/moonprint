@@ -1,0 +1,15 @@
+# 构建镜像时排除这些，避免把本地大文件打进构建上下文
+.git
+.gitignore
+build/
+dist/
+*.egg-info/
+__pycache__/
+*.py[cod]
+.DS_Store
+
+# NASA 贴图（首次运行自动下载，不打进镜像）
+moonbirthday/textures/
+
+# 个人名单
+presets.local.json

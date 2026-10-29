@@ -24,6 +24,8 @@ moonbirthday = "moonbirthday.cli:main"
 [tool.setuptools.packages.find]
 include = ["moonbirthday*"]
 
-# 贴图随包分发，装完即可离线使用
+# 前端网页资源随包分发（HTML/CSS/JS/背景图/logo）
 [tool.setuptools.package-data]
-moonbirthday = ["textures/*.tif", "textures/*.jpg"]
+moonbirthday = ["web/*.html", "web/*.css", "web/*.js", "web/*.png"]
+
+# NASA 贴图（textures/）不随包分发，首次运行自动下载到 ~/.moonprint/textures/
