@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>月印 Moonprint · 生辰月相图</title>
+<link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+<!-- 背景装饰：星尘 + 真实月球 -->
+<div class="ambient" aria-hidden="true">
+  <div class="stars"></div>
+  <div class="bg-moon"></div>
+</div>
+
+<!-- ============ 左上角品牌栏 ============ -->
+<header class="topbar">
+  <img class="topbar-logo" src="/logo-moonprint-trans.png" alt="月印 Moonprint">
+</header>
+
+<div class="wrap">
+
+  <!-- ============ Hero ============ -->
+  <header class="hero">
+    <h1 class="brand">月印</h1>
+    <p class="en">M O O N P R I N T</p>
+    <p class="tag">每个人来到这世上的那天<br>月亮都有它自己的样子</p>
+  </header>
+
+  <!-- ============ 引导 ============ -->
+  <section class="guide">
+    <h2><span class="dot"></span>为每个人留一枚月亮</h2>
+    <p>
+      输入生日，我们用 NASA 的月球贴图与真实星历，
+      还原 TA 出生那天月亮的阴晴圆缺。
+      可以是家人，可以是老友，也可以是那个对你最重要的人——
+      <b>一个人可以，一群人也可以</b>。
+      每个人出生那天的月亮，都是独一份的。
+    </p>
+    <ul class="tips">
+      <li>支持<b>阴历</b>与<b>阳历</b>两种输入，逐行单独选择</li>
+      <li>顺序即排版顺序：从左到右、从上到下</li>
+      <li>纯黑背景，落款只留 logo 与日期</li>
+    </ul>
+  </section>
+
+  <!-- ============ 主区 ============ -->
+  <main class="grid">
+
+    <section class="panel">
+      <div class="panel-head">
+        <h2>想把月亮送给谁</h2>
+        <span class="hint" id="countHint"></span>
+      </div>
+
+      <div id="people" class="people"></div>
+
+      <div class="panel-foot">
+        <button id="add" class="ghost">+ 再添一位</button>
+      </div>
+    </section>
+
+    <section class="panel">
+      <h2>出图设置</h2>
+
+      <div class="row">
+        <label for="cols">排版列数</label>
+        <select id="cols">
+          <option value="">自动（接近正方）</option>
+          <option value="1">1 列</option>
+          <option value="2" selected>2 列</option>
+          <option value="3">3 列</option>
+          <option value="4">4 列</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="quality">画质</label>
+        <select id="quality">
+          <option value="high" selected>高清 4K（月面 2000px）</option>
+          <option value="medium">标准 2K（1400px）</option>
+        </select>
+      </div>
+
+      <div class="row">
+        <label for="hour">取相时刻</label>
+        <select id="hour">
+          <option value="0">当天 00:00 UTC</option>
+          <option value="6">当天 06:00 UTC</option>
+          <option value="12" selected>当天 12:00 UTC</option>
+        </select>
+      </div>
+
+      <div class="divider"></div>
+
+      <div class="row">
+        <label for="fname">图片命名</label>
+        <input type="text" id="fname" placeholder="留空自动生成" autocomplete="off">
+      </div>
+
+      <div class="divider"></div>
+
+      <label class="check" for="addLogo">
+        <input type="checkbox" id="addLogo">
+        <span>和我们一起记录，在成图上加「月印」logo</span>
+      </label>
+
+      <div class="row" id="logoRow" hidden>
+        <label for="logo">logo 样式</label>
+        <select id="logo">
+          <option value="trans" selected>透明底（白色）</option>
+          <option value="black">黑底版（自带衬底）</option>
+        </select>
+      </div>
+
+      <button id="generate" class="primary">生成月相图</button>
+
+      <div id="progress" class="progress" hidden>
+        <div class="bar"><div class="fill" id="barFill"></div></div>
+        <span id="progressText" class="progress-text"></span>
+      </div>
+
+      <div id="error" class="error" hidden></div>
+    </section>
+
+  </main>
+
+  <!-- ============ 结果 ============ -->
+  <section class="panel result" id="result" hidden>
+    <div class="panel-head">
+      <h2>结果 <span class="fname-tag" id="fnameTag"></span></h2>
+      <button id="download" class="primary sm">下载 PNG</button>
+    </div>
+    <div class="preview">
+      <img id="previewImg" alt="月相图预览">
+    </div>
+    <table class="info" id="infoTable">
+      <thead>
+        <tr><th>名字</th><th>输入历法</th><th>公历</th><th>阴历</th><th>月相</th><th>亮面</th><th>朝向</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </section>
+
+  <!-- ============ 署名 ============ -->
+  <footer class="sign">Ryan. 设计与开发</footer>
+
+</div>
+<script src="/app.js"></script>
+</body>
+</html>

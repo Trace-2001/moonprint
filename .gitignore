@@ -1,0 +1,12 @@
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.DS_Store
+
+# NASA 贴图（约 92MB，首次运行自动下载，不随仓库分发）
+moonbirthday/textures/
+
+# 个人名单（不会被分发出去）
+presets.local.json

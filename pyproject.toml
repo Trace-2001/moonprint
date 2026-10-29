@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=61.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "birthday-moon"
+version = "1.0.0"
+description = "把农历生日渲染成出生当天真实月相的图（NASA 月球贴图 + 真实星历）"
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = [
+    "numpy>=1.20",
+    "pillow>=8.0",
+    "ephem>=4.1",
+    "zhdate>=0.1",
+]
+
+[project.optional-dependencies]
+build = ["pyinstaller>=6.0"]
+
+[project.scripts]
+moonbirthday = "moonbirthday.cli:main"
+
+[tool.setuptools.packages.find]
+include = ["moonbirthday*"]
+
+# 贴图随包分发，装完即可离线使用
+[tool.setuptools.package-data]
+moonbirthday = ["textures/*.tif", "textures/*.jpg"]
