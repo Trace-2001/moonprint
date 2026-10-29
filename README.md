@@ -179,8 +179,5 @@ NASA SVS（`svs.gsfc.nasa.gov`）下载到 `~/.moonprint/textures/` 并缓存，
 | `KNEE` | 高光软压缩拐点 |
 | `CONTRAST` / `SAT` / `GRAIN` | sRGB 空间的对比、饱和、散粒噪点 |
 
-三个容易踩的坑，改的时候注意：
+![Uploading 月印Logo-横版-墨黑版.svg…]()
 
-1. **必须做 sRGB ← 线性光编码**（`layout.compose` 里统一处理）。漏掉这一步整个画面会发暗发灰。
-2. **下采样用 2×2 均值**，别用 LANCZOS。后者会在月牙边缘产生振铃光晕。
-3. **地照必须在曝光之后**按绝对线性亮度叠加，多颗月亮的观感才会一致。
